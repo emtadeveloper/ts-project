@@ -1,12 +1,13 @@
 import React from "react";
-import { Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
+import { Box, InputLabel, MenuItem, FormControl, Select,FormHelperText } from "@mui/material";
 import { FormikProps } from "formik";
-import { IInitialValues, IPosition } from "./AddOrEditUser";
+import type * as types from './types'
 
-interface IProps extends FormikProps<IInitialValues> {
+
+interface IProps extends FormikProps<types.IInitialValues> {
   name: string;
   label: string;
-  options: IPosition[];
+  options: types.IPosition[];
 }
 
 const FormikSelect = ({
@@ -31,6 +32,7 @@ const FormikSelect = ({
         >
           {options.map((item)=>( <MenuItem  key={item.label} value={item.value}>{item.label}</MenuItem>))}
         </Select>
+        {!!submitCount && errors.postion && <FormHelperText>{errors.postion}</FormHelperText>}
       </FormControl>
     </Box>
   );

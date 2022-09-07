@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "name": "Ali",
+      "email": "Ali@gmail.com",
+      "position": "frontend",
+      "id": 1,
+      "gender": 0
+    },
+    {
+      "name": "Emad",
+      "email": "Emad@gmail.com",
+      "position": "backend",
+      "id": 2,
+      "gender": 0
+    },
+    {
+      "name": "Kali",
+      "email": "Kali@gmail.com",
+      "position": "frontend",
+      "id": 3,
+      "gender": 0
+    },
+    {
+      "name": "Fahim",
+      "email": "Fahim@gmail.com",
+      "position": "backend",
+      "id": 4,
+      "gender": 1
+    }
+  ]
+}
