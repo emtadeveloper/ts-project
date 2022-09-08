@@ -1,14 +1,17 @@
+import { Container } from "@mui/system";
 import UserTable from "./components/UserTable/UserTable";
+import Modal from "./components/Modal/Modal";
+
 import { UserContext } from "./context/UserContext";
 
 function App() {
   return (
-    <div className='App'>
-      <h1>Project</h1>
+    <Container maxWidth="lg">
       <UserContext>
         <UserTable />
+        <Modal/>
       </UserContext>
-    </div>
+    </Container>
   );
 }
 

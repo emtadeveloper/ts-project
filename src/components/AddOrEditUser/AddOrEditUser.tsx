@@ -7,24 +7,9 @@ import FormikSelect from "./FormikSelect";
 import { RadioField } from "./RadioField";
 import { Container } from "@mui/system";
 import type * as types from './types'
-
-const initialValues: types.IInitialValues = {
-  name: "",
-  email: "",
-  postion: "",
-  gender: 0,
-};
-
-const positionOptions: types.IPosition[] = [
-  { label: "frontend", value: "frontend" },
-  { label: "backend", value: "backend" },
-];
+import { useConsumeContext } from "../../context/UserContext";
 
 
-const genderItem:types.IGender[] = [
-  { label: "Male", value: 0 },
-  { label: "Femail", value: 1 },
-];
 
 export const validationSchema = Yup.object({
   name: Yup.string().required("please enter your name"),
@@ -34,9 +19,38 @@ export const validationSchema = Yup.object({
 });
 
 export const AddOrEditUser = () => {
+  const {mode,addNewUser,edit,editUser} = useConsumeContext()
   const handleSubmit = (value: types.IInitialValues) => {
-    console.log(value);
+    if(mode === 'add'){
+      addNewUser(value)
+    }else {
+      editUser(value)
+    }
   };
+
+
+  const initialValues: types.IInitialValues =edit.data ?{
+    name: edit.data.name,
+    email: edit.data.email,
+    postion: edit.data.postion,
+    gender: edit.data.gender,
+  } :{
+    name: "",
+    email: "",
+    postion: "",
+    gender: 0,
+  } 
+  
+  const positionOptions: types.IPosition[] = [
+    { label: "frontend", value: "frontend" },
+    { label: "backend", value: "backend" },
+  ];
+  
+  
+  const genderItem:types.IGender[] = [
+    { label: "Male", value: 0 },
+    { label: "Femail", value: 1 },
+  ];
   return (
     <Container maxWidth='md'>
       <Formik

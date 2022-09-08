@@ -4,13 +4,16 @@ export interface IProps {
   children : React.ReactNode
 }
 
-export interface IUser {
+export interface IAdduser {
     name : string ,
     email : string,
-    position : string,
+    postion : string,
     gender : number,
+}
+export interface IUser extends IAdduser {
     id : number
 }
+
 
 export interface IState {
     pageNo : number,
@@ -19,13 +22,17 @@ export interface IState {
     isOpenModal:boolean,
     text:string,
     loading:boolean,
-    edit:{
-        data:null | IUser,
-        id : null
-    }
+    edit:any,
+    pageCount : number
 }
 
 export interface IContextValues extends IState {
-
-
+    handleClickOpen : ()=> void,
+    handleClickClose: ()=> void,
+    handlePageChange : (event:React.ChangeEvent<unknown>,value:number)=> void
+    addNewUser : (data:IAdduser)=>void
+    handleEditUser : (id:number)=> void
+    editUser : (data:IAdduser)=>void
+    handleDeleteUser : (id:number)=> void
+    handleTextChange: (e: React.ChangeEvent<HTMLInputElement>)=> void
 }
